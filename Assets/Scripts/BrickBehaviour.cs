@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class BrickBehaviour : MonoBehaviour
 {
+    [SerializeField] private GameObject winScreen;
+
     private ScoreBehaviour score;
 
     private void Awake()
@@ -13,6 +15,11 @@ public class BrickBehaviour : MonoBehaviour
     private void OnCollisionEnter2D()
     {
         score.value += 5;
+        if (score.value == 72)
+        {
+            Instantiate(winScreen);
+        }
+
         Destroy(gameObject);
     }
 }
